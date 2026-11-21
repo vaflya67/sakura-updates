@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="sakura-version" content="2.0.1">
+<meta name="sakura-version" content="2.0.2">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="theme-color" content="#FFF4F2">
 <title>Sakura</title>
@@ -251,9 +251,10 @@ textarea.field{min-height:110px;font-size:12px;font-family:ui-monospace,monospac
 <canvas id="confetti"></canvas>
 <script>
 'use strict';
-const APP_VERSION = '2.0.1';
+const APP_VERSION = '2.0.2';
 const UPDATE_URL = 'https://raw.githubusercontent.com/vaflya67/sakura-updates/main/update.json';
-const WHATS_NEW = ['📆 Дни недели кликабельные — нажми на любой день и смотри его план', '✅ Нажми на кружок — и упражнение сразу отмечено как сделанное', '📝 Нажми на само упражнение — откроется подробная запись, как раньше', '📅 План на неделю — составь один раз, и он будет повторяться', '🌸 Каждый день: «Сегодня у нас…» со списком упражнений и галочками', '✏️ Любой день можно поменять — навсегда или только на одну дату', '🔔 Напоминания о тренировке в удобное время', '⚡ Автообновления — новые версии будут прилетать сами'];
+const UPDATE_API = 'https://api.github.com/repos/vaflya67/sakura-updates/contents/update.json';
+const WHATS_NEW = ['📆 Дни недели кликабельные — нажми на любой день и смотри его план', '✅ Нажми на кружок — и упражнение сразу отмечено как сделанное', '📝 Нажми на само упражнение — откроется подробная запись, как раньше', '🛠 Обновления теперь приходят быстрее и надёжнее'];
 const STORE_KEY = 'sakura_v1';
 
 /* ---------- utils ---------- */
@@ -1158,7 +1159,9 @@ let UPD_BUSY = false;
 async function checkUpdates(manual) {
   if (!isNative() || UPD_BUSY) return; UPD_BUSY = true;
   try {
-    const u = await (await fetch(UPDATE_URL + '?t=' + Date.now(), { cache: 'no-store' })).json();
+    let u;
+    try { u = await (await fetch(UPDATE_API + '?t=' + Date.now(), { cache: 'no-store', headers: { Accept: 'application/vnd.github.raw' } })).json(); if (!u || !u.web) throw 0; }
+    catch (e) { u = await (await fetch(UPDATE_URL + '?t=' + Date.now(), { cache: 'no-store' })).json(); }
     const build = await nativeBuild();
     if (u.apk && +u.apk.build > build) { showUpd('apk', u.apk); return; }
     if (u.web && vcmp(u.web.version, APP_VERSION) > 0 && (!u.web.minBuild || build >= u.web.minBuild)) {
