@@ -1,8 +1,7 @@
 {
   "web": {
-    "version": "2.0.1",
-    "url": "https://raw.githubusercontent.com/vaflya67/sakura-updates/main/app.html",
-    "minBuild": 20000,
+    "version": "2.0.2",
+    "url": "https://raw.githubusercontent.com/vaflya67/sakura-updates/ed7a15b2c97feae5a22d79210dbdfbd5ba55b0e9/app.html",
     "notes": "Кликабельные дни недели и быстрые галочки ✅"
   },
   "apk": {
