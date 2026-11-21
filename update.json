@@ -1,0 +1,14 @@
+{
+  "web": {
+    "version": "2.0.0",
+    "url": "https://raw.githubusercontent.com/vaflya67/sakura-updates/main/app.html",
+    "minBuild": 20000,
+    "notes": "План на неделю, напоминания, автообновления"
+  },
+  "apk": {
+    "version": "2.0.0",
+    "build": 20000,
+    "url": "https://raw.githubusercontent.com/vaflya67/sakura-updates/main/Sakura.apk",
+    "notes": "План на неделю, напоминания, автообновления"
+  }
+}
