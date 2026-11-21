@@ -1,8 +1,8 @@
 {
   "web": {
-    "version": "2.0.2",
-    "url": "https://raw.githubusercontent.com/vaflya67/sakura-updates/ed7a15b2c97feae5a22d79210dbdfbd5ba55b0e9/app.html",
-    "notes": "Кликабельные дни недели и быстрые галочки ✅"
+    "version": "2.1.0",
+    "url": "https://raw.githubusercontent.com/vaflya67/sakura-updates/c8e0c381749657e064feb9df14732c24cae62613/app.html",
+    "notes": "Режим тренировки: само ведёт по плану ▶️"
   },
   "apk": {
     "version": "2.0.0",
